@@ -1,23 +1,31 @@
-// React Functional Component, a function that returns JSX and exports it.
-import Navbar from './components/Navbar'
-import Banner from './components/Banner'
-
+import Button from "./components/Button";
+import ProductComponent from "./components/ProductComponent";
+import AboutComponent from "./pages/AboutComponent";
+import HomeComponent from "./pages/HomeComponent";
+import Navbar from "./components/Navbar";
+import { Navigate, Route, Routes } from "react-router-dom";
+import NotFound from "./pages/NotFound";
+import Register from "./pages/Register";
+import ProductPage from "./pages/ProductPage";
+// props - properties
+// limitations of props, passing functions as props
+//routing - 
+//redirection
 const App = () => {
   return (
-    <div>
-      App
-      <Navbar/>
-      <Banner/>
-    </div>
-  )
-}
+    <>
+        <Navbar/>
+        <Routes>
+          <Route path="/" element={<HomeComponent/>}/>
+          <Route path="/sp-about_us" element={<AboutComponent/>}/>
+          <Route path="/about" element={<Navigate to="/sp-about_us"/>}/>
+          <Route path="/register" element={<Register/>}/>
+          <Route path="/product/:productname" element={<ProductPage/>} />
+          <Route path="*" element={<NotFound/>}/>
+        </Routes>
+    </>
+  );
+};
 
-export default App
-
-
-// ES5 and ES6 - ECMASCRIPT
-// snippet,fragrament and one parent element
-// rafce , rfce
-// creating other components, creating build versions.
-// development version ------ Production Version/Build Version
-// 67.6 mb, 67.8mb, 0.2mb
+export default App;
+// dynamic routing, parameterized routes,
